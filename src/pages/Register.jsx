@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
@@ -20,6 +20,7 @@ const Register = () => {
     e.preventDefault();
     try {
       await axios.post("/auth/register", inputs);
+      navigate("/login")
     } catch (error) {
       setError(error.response.data);
     }
